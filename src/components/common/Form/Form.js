@@ -1,6 +1,7 @@
 import Yup from 'yup';
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
+import { PrimaryButton } from '../Button';
 import {
   Field,
   Formik,
@@ -11,6 +12,7 @@ import {
 const Form = ({
   fields,
   onSubmit,
+  className,
   initialValues,
   validationSchema,
 }) => (
@@ -19,7 +21,7 @@ const Form = ({
     initialValues={initialValues}
     validationSchema={validationSchema}
   >
-    <FormikForm className="form">
+    <FormikForm className={className}>
       {fields.map(({
         name,
         type,
@@ -27,10 +29,10 @@ const Form = ({
         component,
         placeholder,
         ...rest
-      }) => (
-        <Fragment>
+      }, index) => (
+        <Fragment key={name}>
           { label && (
-            <label className="label" for={name}>
+            <label htmlFor={name}>
               { `${label}:` }
             </label>
             )
@@ -40,19 +42,20 @@ const Form = ({
             type={type}
             htmlFor={name}
             as={component}
-            className="field"
             placeholder={placeholder}
             {...rest}
           />
           <ErrorMessage className="error" name={name} />
         </Fragment>
       ))}
+      <PrimaryButton type="submit">Submit</PrimaryButton>
     </FormikForm>
   </Formik>
 );
 
 Form.propTypes = {
   onSubmit: PropTypes.func,
+  className: PropTypes.string,
   initialValues: PropTypes.object,
   fields: PropTypes.arrayOf({
     name: PropTypes.string,
