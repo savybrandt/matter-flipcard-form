@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import { Card } from '../common/Card';
 import TeamMember from '../TeamMember';
+import NewTeamMember from '../NewTeamMember';
 import './App.css';
 
 class App extends React.Component {
@@ -41,17 +43,19 @@ class App extends React.Component {
       <div className="app">
         <div className="team-grid" />
         {this.state.team.map(member => (
-          <TeamMember
-            key={member.id}
-            name={`${member.firstName} ${member.lastName}`}
-            title={member.title}
-            photoUrl={member.photoUrl}
-            story={member.story}
-            favoriteColor={member.favoriteColor}
-          />
+          <Card>
+            <TeamMember
+              key={member.id}
+              name={`${member.firstName} ${member.lastName}`}
+              title={member.title}
+              photoUrl={member.photoUrl}
+              story={member.story}
+              favoriteColor={member.favoriteColor}
+            />
+          </Card>
         ))}
         {/* Make this new team member link to your form! */}
-        <TeamMember id="new" name="Join us!" title="New Teammate" />
+        <NewTeamMember />
       </div>
     );
   }

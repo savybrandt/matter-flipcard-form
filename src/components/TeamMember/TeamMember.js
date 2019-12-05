@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './TeamMember.css';
 import MatterEmptyAvatar from '../../assets/matter_empty_avatar.svg';
@@ -20,7 +20,7 @@ class TeamMember extends React.PureComponent {
 
   render() {
     return (
-      <div className="container">
+      <Fragment>
         <header>
           <div className="avatar-container">
             <img
@@ -45,7 +45,7 @@ class TeamMember extends React.PureComponent {
             <div className="one-third-flex-box">GRIT</div>
           </div>
         </footer>
-      </div>
+      </Fragment>
     );
   }
 }
