@@ -1,7 +1,7 @@
 import Yup from 'yup';
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
-import { PrimaryButton } from '../Button';
+import { PrimaryButton, SecondaryButton } from '../Button';
 import {
   Field,
   Formik,
@@ -11,6 +11,7 @@ import {
 
 const Form = ({
   fields,
+  onCancel,
   onSubmit,
   className,
   initialValues,
@@ -30,7 +31,7 @@ const Form = ({
         placeholder,
         ...rest
       }, index) => (
-        <Fragment key={name}>
+        <div className={`${name}-field field-container`} key={name}>
           { label && (
             <label htmlFor={name}>
               { `${label}:` }
@@ -46,31 +47,40 @@ const Form = ({
             {...rest}
           />
           <ErrorMessage className="error" name={name} />
-        </Fragment>
+        </div>
       ))}
-      <PrimaryButton type="submit">Submit</PrimaryButton>
+      <div className="button-bar">
+        <SecondaryButton onClick={onCancel} type="button">Cancel</SecondaryButton>
+        <PrimaryButton type="submit">Submit</PrimaryButton>
+      </div>
     </FormikForm>
   </Formik>
 );
 
 Form.propTypes = {
   onSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
   className: PropTypes.string,
   initialValues: PropTypes.object,
   fields: PropTypes.arrayOf({
     name: PropTypes.string,
     type: PropTypes.string,
     label: PropTypes.string,
-    component: PropTypes.node,
     placeholder: PropTypes.string,
   }),
   validationSchema: PropTypes.instanceOf(Yup)
 };
 
 Form.defaultProps = {
-  fields: [],
+  fields: [{
+    name: 'text',
+    type: 'text',
+    label: 'text',
+    placeholder: 'text',
+  }],
   initialValues: {},
   onSubmit: () => {},
+  onCancel: () => {},
   validationSchema: undefined
 };
 
