@@ -32,7 +32,6 @@ const StyledFlipCard = styled.div`
   }
 
   .flip-card-front, .flip-card-back {
-    position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
@@ -40,10 +39,12 @@ const StyledFlipCard = styled.div`
 
   .flip-card-front {
     display: flex;
+    margin-right: -80px;
     flex-direction: column;
   }
 
   .flip-card-back {
+    margin-top: -610px;
     transform: rotateY(180deg);
   }
 `;

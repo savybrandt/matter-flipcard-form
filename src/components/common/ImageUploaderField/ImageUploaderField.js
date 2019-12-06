@@ -16,6 +16,7 @@ const ImageUploaderField = ({setFieldValue, ...rest}) => {
   const [url, setUrl] = useState();
   const [fileName, setFileName] = useState('');
   const onUpload = (file, url) => {
+    if(!file) return;
     setUrl(url);
     setFileName(file.name);
     setFieldValue(rest.name, url);
@@ -27,6 +28,7 @@ const ImageUploaderField = ({setFieldValue, ...rest}) => {
         type="file"
         withIcon={false}
         withLabel={false}
+        maxFileSize={300000}
         buttonText="Choose Image"
         onChange={(files, urls) => onUpload(files[0], urls[0])}
       />

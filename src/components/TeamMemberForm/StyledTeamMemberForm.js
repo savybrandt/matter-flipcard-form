@@ -12,9 +12,11 @@ const StyledTeamMemberForm = styled(TeamMemberForm)`
 
   .story-field {
     width: 100%;
-    textarea: {
-      border: none;
-    }
+  }
+
+  textarea {
+    border: none;
+    font-size: 12px;
   }
 `;
 
