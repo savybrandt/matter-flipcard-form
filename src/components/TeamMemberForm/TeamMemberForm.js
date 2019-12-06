@@ -3,7 +3,7 @@ import useAxios from 'axios-hooks';
 import { fields } from './formConfig';
 import { StyledForm } from '../common/Form';
 
-const TeamMemberForm = ({ flipCard }) => {
+const TeamMemberForm = ({ flipCard, refetchData }) => {
   const [{data, loading, error}, executePost] = useAxios({
     url: '/teamMember',
     method: 'POST'
@@ -12,7 +12,10 @@ const TeamMemberForm = ({ flipCard }) => {
   useEffect(() => {
     // if (error) return error;
     // if (loading) return 'Loading';
-    if (data) flipCard();
+    if (data) {
+      flipCard();
+      refetchData();
+    };
   }, [data, error, loading]);
 
 

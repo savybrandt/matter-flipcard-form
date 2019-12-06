@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './TeamMember.css';
+import Avatar from '../common/Avatar';
 import MatterEmptyAvatar from '../../assets/matter_empty_avatar.svg';
 
 class TeamMember extends React.PureComponent {
@@ -22,13 +23,7 @@ class TeamMember extends React.PureComponent {
     return (
       <Fragment>
         <header>
-          <div className="avatar-container">
-            <img
-              className="avatar"
-              src={this.props.photoUrl}
-              alt={this.props.name}
-            />
-          </div>
+          <Avatar src={this.props.photoUrl} alt={this.props.name}/>
           <h2 className="title">{this.props.title}</h2>
           <h1 className="name">{this.props.name}</h1>
         </header>

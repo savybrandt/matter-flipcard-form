@@ -55,7 +55,7 @@ class App extends React.Component {
           </Card>
         ))}
         {/* Make this new team member link to your form! */}
-        <NewTeamMember />
+        <NewTeamMember refetchData={this.fetchInitialData.bind(this)}/>
       </div>
     );
   }

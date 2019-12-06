@@ -5,7 +5,6 @@ import { PrimaryButton, SecondaryButton } from '../Button';
 import {
   Formik,
   ErrorMessage,
-  Form as FormikForm,
   Field as FormikField,
 } from 'formik';
 
@@ -56,36 +55,39 @@ const Form = ({
       initialValues={initialValues}
       validationSchema={validationSchema}
     >
-      <FormikForm className={className}>
-        <div className="counter">{`${page}/${pageCount}`}</div>
-        {fields.map((props, index) => (
-        <Field
-          key={`${page}-${index}`}
-          currentPage={page}
-          {...props}
-        />
-        ))}
-        <div className="button-bar">
-          { page === 1 ? (
-              <SecondaryButton type="button" onClick={onCancel}>
-                Cancel
-              </SecondaryButton>
-            ):(
-              <SecondaryButton type="button" onClick={() => setPage(page-1)}>
-                Back
-              </SecondaryButton>
-            )
-          }
-          { isLastPage ? (
-              <PrimaryButton type="submit">Submit</PrimaryButton>
-            ):(
-              <PrimaryButton onClick={() => setPage(page+1)} type="button">
-              Next
-              </PrimaryButton>
-            )
-          }
-        </div>
-      </FormikForm>
+      {({handleSubmit, setFieldValue}) => (
+        <form className={className} onSubmit={handleSubmit}>
+          <div className="counter">{`${page}/${pageCount}`}</div>
+          {fields.map((props, index) => (
+          <Field
+            key={`${page}-${index}`}
+            currentPage={page}
+            setFieldValue={setFieldValue}
+            {...props}
+          />
+          ))}
+          <div className="button-bar">
+            { page === 1 ? (
+                <SecondaryButton type="button" onClick={onCancel}>
+                  Cancel
+                </SecondaryButton>
+              ):(
+                <SecondaryButton type="button" onClick={() => setPage(page-1)}>
+                  Back
+                </SecondaryButton>
+              )
+            }
+            { isLastPage ? (
+                <PrimaryButton type="submit">Submit</PrimaryButton>
+              ):(
+                <PrimaryButton onClick={() => setPage(page+1)} type="button">
+                Next
+                </PrimaryButton>
+              )
+            }
+          </div>
+        </form>
+      )}
     </Formik>
   );
 };

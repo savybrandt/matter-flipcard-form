@@ -17,6 +17,7 @@ const NewTeamMember = (props) => (
   <FlipCard
     front={Front}
     back={TeamMemberForm}
+    {...props}
   />
 )
 

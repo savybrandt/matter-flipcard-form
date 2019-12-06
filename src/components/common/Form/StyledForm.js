@@ -33,6 +33,10 @@ const StyledForm = styled(Form)`
     border-radius: .28571429rem;
   }
 
+  .photoUrl-field{
+    width: 100%;
+  }
+
   .button-bar {
     width: 100%;
     display: flex;

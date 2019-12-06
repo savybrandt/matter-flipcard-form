@@ -48,17 +48,17 @@ const StyledFlipCard = styled.div`
   }
 `;
 
-const FlipCard = ({ front: Front, back: Back}) => {
+const FlipCard = ({ front: Front, back: Back, ...rest}) => {
   const [flipped, setFlipped] = useState(false);
   const flipCard = () => setFlipped(!flipped);
   return (
     <StyledFlipCard className={flipped ? 'flipped' : ''} >
       <div className="flip-card-inner">
         <div className="flip-card-front">
-          <Front flipCard={flipCard}/>
+          <Front flipCard={flipCard} {...rest}/>
         </div>
         <div className="flip-card-back">
-          <Back flipCard={flipCard}/>
+          <Back flipCard={flipCard} {...rest}/>
         </div>
       </div>
     </StyledFlipCard>
