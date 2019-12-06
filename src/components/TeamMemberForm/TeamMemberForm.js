@@ -10,14 +10,15 @@ const TeamMemberForm = ({ flipCard }) => {
   },{ manual: true });
 
   useEffect(() => {
-    if (error) return error;
-    if (loading) return 'Loading';
+    // if (error) return error;
+    // if (loading) return 'Loading';
     if (data) flipCard();
   }, [data, error, loading]);
 
 
   return (
     <StyledForm
+      pageCount={3}
       fields={fields}
       onCancel={flipCard}
       onSubmit={data => executePost({ data })}

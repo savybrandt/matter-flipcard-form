@@ -8,6 +8,11 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: self-start;
 
+  .counter {
+    color: #07bb87;
+    margin-left: auto;
+  }
+
   label {
     font-weight: bold;
   }

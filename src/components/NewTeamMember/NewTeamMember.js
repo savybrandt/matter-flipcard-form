@@ -9,7 +9,7 @@ const Front = ({ flipCard }) => (
     id="new"
     name="Join us!"
     title="New Teammate"
-    story={<PrimaryButton onClick={flipCard}>Join Team</PrimaryButton>}
+    story={<PrimaryButton onClick={flipCard}>Let's do it!</PrimaryButton>}
   />
 );
 
