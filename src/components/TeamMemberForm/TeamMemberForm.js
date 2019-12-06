@@ -3,7 +3,7 @@ import useAxios from 'axios-hooks';
 import { fields } from './formConfig';
 import { StyledForm } from '../common/Form';
 
-const TeamMemberForm = ({ flipCard, refetchData }) => {
+const TeamMemberForm = ({ flipCard, refetchData, className }) => {
   const [{data, loading, error}, executePost] = useAxios({
     url: '/teamMember',
     method: 'POST'
@@ -24,6 +24,7 @@ const TeamMemberForm = ({ flipCard, refetchData }) => {
       pageCount={3}
       fields={fields}
       onCancel={flipCard}
+      className={className}
       onSubmit={data => executePost({ data })}
     />
   );

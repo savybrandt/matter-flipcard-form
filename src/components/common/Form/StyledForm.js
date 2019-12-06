@@ -23,18 +23,23 @@ const StyledForm = styled(Form)`
     text-align: left;
   }
 
-  input {
-    width: 100%;
-    display: block;
+  .field {
     margin-top: 8px;
+    display: block;
+  }
+
+  textarea {
+    height: 250px;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  input, textarea {
+    width: 100%;
     text-align: left;
     padding: .67857143em 1em;
     border: 1px solid #22242626;
     border-radius: .28571429rem;
-  }
-
-  .photoUrl-field{
-    width: 100%;
   }
 
   .button-bar {

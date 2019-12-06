@@ -1,47 +1,46 @@
 import { FIELDS } from './constants';
 import ImageUploaderField from '../common/ImageUploaderField';
+import ColorPickerField from '../common/ColorPickerField';
 
 export const fields = [
   {
-    name: FIELDS.FIRST,
-    type: 'text',
     page: 1,
+    type: 'text',
+    name: FIELDS.FIRST,
     label: 'First Name',
     placeholder: 'Cool',
   },
     {
-    name: FIELDS.LAST,
-    type: 'text',
     page: 1,
+    type: 'text',
+    name: FIELDS.LAST,
     label: 'Last Name',
-    placeholder: 'Cool',
+    placeholder: 'Cat',
   },
     {
-    name: FIELDS.TITLE,
-    type: 'text',
     page: 1,
+    type: 'text',
     label: 'Title',
-    placeholder: 'Cool',
+    name: FIELDS.TITLE,
+    placeholder: 'Engineer',
   },
   {
-    name: FIELDS.COLOR,
-    type: 'text',
     page: 1,
+    name: FIELDS.COLOR,
+    component: ColorPickerField,
     label: 'Choose your favorite color',
-    placeholder: 'Cool',
   },
     {
-    name: FIELDS.IMG,
     page: 2,
+    name: FIELDS.IMG,
     label: 'Upload a photo',
-    placeholder: 'Cool',
     component: ImageUploaderField
   },
   {
-    name: FIELDS.STORY,
-    type: 'textarea',
     page: 3,
-    label: 'Story',
-    placeholder: 'Cool',
+    name: FIELDS.STORY,
+    component: 'textarea',
+    label: 'Tell us your story',
+    placeholder: 'Some of the best feedback I received was...',
   }
 ];

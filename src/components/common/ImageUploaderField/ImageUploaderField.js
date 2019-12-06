@@ -4,22 +4,21 @@ import styled from 'styled-components';
 import Avatar from '../Avatar';
 
 const Preview = styled(Avatar)`
-  margin-top: 12px;
+  margin-top: 24px;
   .avatar {
-    height: 300px;
-    width: 300px;
-    border: solid 3px #05bb87;
+    height: 290px;
+    width: 290px;
     box-shadow: 2px 2px 3px 0 #dadada;
   }
 `;
 
-const ImageUploaderField = ({setFieldValue, value, ...rest}) => {
-  const [url, setUrl] = useState('');
+const ImageUploaderField = ({setFieldValue, ...rest}) => {
+  const [url, setUrl] = useState();
   const [fileName, setFileName] = useState('');
   const onUpload = (file, url) => {
     setUrl(url);
     setFileName(file.name);
-    setFieldValue('photoUrl', url);
+    setFieldValue(rest.name, url);
   };
   return (
     <Fragment>

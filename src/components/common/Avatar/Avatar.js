@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import MatterEmptyAvatar from '../../../assets/matter_empty_avatar.svg';
 
 export const Avatar = ({src, alt, className}) => (
   <div className={className}>
@@ -25,5 +27,15 @@ const StyledAvatar = styled(Avatar)`
     display: inline-block;
   }
 `;
+
+Avatar.propTypes = {
+  src: PropTypes.string,
+  alt: PropTypes.string
+};
+
+Avatar.defaultProps = {
+  src: MatterEmptyAvatar,
+  alt: 'avatar'
+};
 
 export default StyledAvatar;

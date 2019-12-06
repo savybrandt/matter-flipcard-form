@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './TeamMember.css';
 import Avatar from '../common/Avatar';
-import MatterEmptyAvatar from '../../assets/matter_empty_avatar.svg';
 
 class TeamMember extends React.PureComponent {
   static propTypes = {
@@ -14,7 +13,6 @@ class TeamMember extends React.PureComponent {
   };
 
   static defaultProps = {
-    photoUrl: MatterEmptyAvatar,
     story: null,
     favoriteColor: '#3466F2'
   };

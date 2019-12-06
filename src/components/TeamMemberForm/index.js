@@ -1,1 +1,1 @@
-export { default as TeamMemberForm } from './TeamMemberForm';
+export { default as TeamMemberForm } from './StyledTeamMemberForm';

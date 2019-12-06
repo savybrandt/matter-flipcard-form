@@ -30,6 +30,7 @@ const Field = ({
         type={type}
         htmlFor={name}
         as={component}
+        className="field"
         placeholder={placeholder}
         {...rest}
       />
