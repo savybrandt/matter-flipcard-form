@@ -8,20 +8,20 @@ class TeamMember extends React.PureComponent {
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     photoUrl: PropTypes.string,
-    story: PropTypes.string,
-    favoriteColor: PropTypes.string
+    story: PropTypes.node,
+    favoriteColor: PropTypes.string,
   };
 
   static defaultProps = {
     story: null,
-    favoriteColor: '#3466F2'
+    favoriteColor: '#3466F2',
   };
 
   render() {
     return (
-      <Fragment>
+      <>
         <header>
-          <Avatar src={this.props.photoUrl} alt={this.props.name}/>
+          <Avatar src={this.props.photoUrl} alt={this.props.name} />
           <h2 className="title">{this.props.title}</h2>
           <h1 className="name">{this.props.name}</h1>
         </header>
@@ -38,7 +38,7 @@ class TeamMember extends React.PureComponent {
             <div className="one-third-flex-box">GRIT</div>
           </div>
         </footer>
-      </Fragment>
+      </>
     );
   }
 }

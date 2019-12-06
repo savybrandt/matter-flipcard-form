@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import useAxios from 'axios-hooks';
-import { fields } from './formConfig';
 import { StyledForm } from '../common/Form';
+import { fields, validationScheama } from './formConfig';
 
 const TeamMemberForm = ({ flipCard, refetchData, className }) => {
-  const [{data, loading, error}, executePost] = useAxios({
+  const [{ data, loading, error }, executePost] = useAxios({
     url: '/teamMember',
-    method: 'POST'
-  },{ manual: true });
+    method: 'POST',
+  }, { manual: true });
 
   useEffect(() => {
     // if (error) return error;
@@ -15,8 +16,8 @@ const TeamMemberForm = ({ flipCard, refetchData, className }) => {
     if (data) {
       flipCard();
       refetchData();
-    };
-  }, [data, error, loading]);
+    }
+  }, [data, error, flipCard, loading, refetchData]);
 
 
   return (
@@ -25,9 +26,16 @@ const TeamMemberForm = ({ flipCard, refetchData, className }) => {
       fields={fields}
       onCancel={flipCard}
       className={className}
-      onSubmit={data => executePost({ data })}
+      validationScheama={validationScheama}
+      onSubmit={(data) => executePost({ data })}
     />
   );
-}
+};
+
+TeamMemberForm.propTypes = {
+  flipCard: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
+  refetchData: PropTypes.func.isRequired,
+};
 
 export default TeamMemberForm;

@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import ImageUploader from 'react-images-upload'
+import PropTypes from 'prop-types';
+import ImageUploader from 'react-images-upload';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
 
@@ -12,18 +13,18 @@ const Preview = styled(Avatar)`
   }
 `;
 
-const ImageUploaderField = ({setFieldValue, ...rest}) => {
-  const [url, setUrl] = useState();
+const ImageUploaderField = ({ setFieldValue, ...rest }) => {
+  const [src, setSrc] = useState();
   const [fileName, setFileName] = useState('');
   const onUpload = (file, url) => {
-    if(!file) return;
-    setUrl(url);
+    if (!file) return;
+    setSrc(url);
     setFileName(file.name);
     setFieldValue(rest.name, url);
   };
   return (
-    <Fragment>
-      <Preview src={url} alt={fileName}/>
+    <>
+      <Preview src={src} alt={fileName} />
       <ImageUploader
         type="file"
         withIcon={false}
@@ -32,8 +33,12 @@ const ImageUploaderField = ({setFieldValue, ...rest}) => {
         buttonText="Choose Image"
         onChange={(files, urls) => onUpload(files[0], urls[0])}
       />
-    </Fragment>
-  )
-}
+    </>
+  );
+};
+
+ImageUploaderField.propTypes = {
+  setFieldValue: PropTypes.func.isRequired,
+};
 
 export default ImageUploaderField;

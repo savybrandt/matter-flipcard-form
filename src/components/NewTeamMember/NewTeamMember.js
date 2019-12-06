@@ -19,6 +19,10 @@ const NewTeamMember = (props) => (
     back={TeamMemberForm}
     {...props}
   />
-)
+);
+
+Front.propTypes = {
+  flipCard: PropTypes.func.isRequired,
+};
 
 export default NewTeamMember;

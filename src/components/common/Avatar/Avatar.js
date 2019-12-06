@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MatterEmptyAvatar from '../../../assets/matter_empty_avatar.svg';
 
-export const Avatar = ({src, alt, className}) => (
+export const Avatar = ({ src, alt, className }) => (
   <div className={className}>
     <img
       alt={alt}
@@ -30,12 +30,14 @@ const StyledAvatar = styled(Avatar)`
 
 Avatar.propTypes = {
   src: PropTypes.string,
-  alt: PropTypes.string
+  alt: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Avatar.defaultProps = {
   src: MatterEmptyAvatar,
-  alt: 'avatar'
+  alt: 'avatar',
+  className: '',
 };
 
 export default StyledAvatar;

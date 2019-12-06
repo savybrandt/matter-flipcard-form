@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       team: [],
-      loading: true
+      loading: true,
     };
   }
 
@@ -30,7 +30,7 @@ class App extends React.Component {
     const response = await axios.get('/team');
     this.setState({
       team: response.data,
-      loading: false
+      loading: false,
     });
   }
 
@@ -42,10 +42,9 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="team-grid" />
-        {this.state.team.map(member => (
-          <Card>
+        {this.state.team.map((member) => (
+          <Card key={member.id}>
             <TeamMember
-              key={member.id}
               name={`${member.firstName} ${member.lastName}`}
               title={member.title}
               photoUrl={member.photoUrl}
@@ -55,7 +54,7 @@ class App extends React.Component {
           </Card>
         ))}
         {/* Make this new team member link to your form! */}
-        <NewTeamMember refetchData={this.fetchInitialData.bind(this)}/>
+        <NewTeamMember refetchData={this.fetchInitialData.bind(this)} />
       </div>
     );
   }

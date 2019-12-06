@@ -49,27 +49,33 @@ const StyledFlipCard = styled.div`
   }
 `;
 
-const FlipCard = ({ front: Front, back: Back, ...rest}) => {
+const FlipCard = ({ front: Front, back: Back, ...rest }) => {
   const [flipped, setFlipped] = useState(false);
   const flipCard = () => setFlipped(!flipped);
   return (
-    <StyledFlipCard className={flipped ? 'flipped' : ''} >
+    <StyledFlipCard className={flipped ? 'flipped' : ''}>
       <div className="flip-card-inner">
         <div className="flip-card-front">
-          <Front flipCard={flipCard} {...rest}/>
+          <Front flipCard={flipCard} {...rest} />
         </div>
         <div className="flip-card-back">
-          <Back flipCard={flipCard} {...rest}/>
+          <Back flipCard={flipCard} {...rest} />
         </div>
       </div>
     </StyledFlipCard>
   );
-}
+};
 
 
 FlipCard.propTypes = {
-  back: PropTypes.node.isRequired,
-  front: PropTypes.node.isRequired,
-}
+  back: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.object,
+  ]).isRequired,
+  front: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.object,
+  ]).isRequired,
+};
 
 export default FlipCard;
