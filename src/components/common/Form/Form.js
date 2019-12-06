@@ -73,12 +73,18 @@ const Form = ({
   const isLastPage = page === pageCount;
   return (
     <Formik
-      onSubmit={onSubmit}
+      onSubmit={(values, { resetForm }) => {
+        onSubmit(values);
+        resetForm();
+        setPage(1);
+      }}
       initialValues={initialValues}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit, setFieldValue }) => (
-        <form className={className} onSubmit={handleSubmit}>
+      {({ handleSubmit, setFieldValue, handleReset }) => (
+        <form
+          className={className}
+        >
           <div className="counter">{`${page}/${pageCount}`}</div>
           {fields.map((props, index) => (
             <Field
@@ -90,8 +96,14 @@ const Form = ({
           ))}
           <div className="button-bar">
             { page === 1 ? (
-              <SecondaryButton type="button" onClick={onCancel}>
-                  Cancel
+              <SecondaryButton
+                type="button"
+                onClick={() => {
+                  handleReset();
+                  onCancel();
+                }}
+              >
+                Cancel
               </SecondaryButton>
             ) : (
               <SecondaryButton type="button" onClick={() => setPage(page - 1)}>
@@ -99,7 +111,7 @@ const Form = ({
               </SecondaryButton>
             )}
             { isLastPage ? (
-              <PrimaryButton type="submit">Submit</PrimaryButton>
+              <PrimaryButton onClick={handleSubmit}>Submit</PrimaryButton>
             ) : (
               <PrimaryButton onClick={() => setPage(page + 1)} type="button">
                 Next

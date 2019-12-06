@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TeamMember from '../TeamMember';
 import { FlipCard } from '../common/Card';
 import { PrimaryButton } from '../common/Button';

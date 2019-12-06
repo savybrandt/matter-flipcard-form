@@ -13,10 +13,7 @@ const TeamMemberForm = ({ flipCard, refetchData, className }) => {
   useEffect(() => {
     // if (error) return error;
     // if (loading) return 'Loading';
-    if (data) {
-      flipCard();
-      refetchData();
-    }
+    if (data) refetchData();
   }, [data, error, flipCard, loading, refetchData]);
 
 
@@ -27,7 +24,10 @@ const TeamMemberForm = ({ flipCard, refetchData, className }) => {
       onCancel={flipCard}
       className={className}
       validationScheama={validationScheama}
-      onSubmit={(data) => executePost({ data })}
+      onSubmit={(values) => {
+        flipCard();
+        executePost({ data: values });
+      }}
     />
   );
 };
